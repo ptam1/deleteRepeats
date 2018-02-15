@@ -58,4 +58,5 @@ public:
     void list_clear(node*& head_ptr);
     void list_copy(const node* source_ptr, node*& head_ptr, node*& tail_ptr);
 	void list_remove(node* previous_ptr);
+	void remove_repeats(node*& head_ptr, const node::value_type &target);
 #endif

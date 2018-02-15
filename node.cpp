@@ -88,7 +88,7 @@ using namespace std;
 
         remove_ptr = previous_ptr->link();
         previous_ptr->set_link(remove_ptr->link());
-       // delete remove_ptr;
+        delete remove_ptr;
     } 
 
     void list_clear(node*& head_ptr)
@@ -119,6 +119,26 @@ using namespace std;
             tail_ptr = tail_ptr->link();
             source_ptr = source_ptr->link();
         }
+	}
+	
+	void remove_repeats(node*& head_ptr, const node::value_type &target)
+	{
+		node* cursor = head_ptr;
+		node* previous_ptr;
+		node* remove_ptr;
+		node* next;
+
+        for (cursor = head_ptr; cursor != NULL; cursor = cursor->link())
+		{
+			
+			next = cursor->link();
+			if(next->data() == target)
+			{
+				previous_ptr = cursor; 
+				remove_ptr = next;
+				previous_ptr->set_link(remove_ptr->link());
+			}
+		}
 	}
 	
 
