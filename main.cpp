@@ -5,6 +5,10 @@
 #include "node.h"
 using namespace std;
 
+
+
+void remove_repeats(node*& head_ptr, const node::value_type &target); 
+
 int main()
 {
 	//node* head_ptr = new node();
@@ -34,3 +38,25 @@ int main()
     cout << " " << endl;
 	return 0;
 }
+
+
+
+void remove_repeats(node*& head_ptr, const node::value_type &target)
+	{
+		node* cursor = head_ptr;
+		node* previous_ptr;
+		node* remove_ptr;
+		node* next;
+
+        for (cursor = head_ptr; cursor != NULL; cursor = cursor->link())
+		{
+			
+			next = cursor->link();
+			if(next->data() == target)
+			{
+				previous_ptr = cursor; 
+				remove_ptr = next;
+				previous_ptr->set_link(remove_ptr->link());
+			}
+		}
+	}
